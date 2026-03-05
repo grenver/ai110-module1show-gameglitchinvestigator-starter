@@ -11,6 +11,7 @@ Completed fixes:
 - Stabilized state resets for difficulty changes and new game flow.
 - Kept the attempts/score info bar in its original UI position while updating correctly after submit.
 - Invalid guesses now show an explicit error and **do not consume attempts**.
+- Added difficulty-range input validation (out-of-range guesses are rejected and do not consume attempts).
 - Aligned tests with the current `check_guess` return shape and verified tests pass.
 
 ## 🛠️ Setup
@@ -30,6 +31,7 @@ Completed fixes:
    - high/low outcomes are consistent across all attempts,
   - difficulty/new game resets state correctly,
   - invalid input does not reduce attempts,
+   - out-of-range guesses show a clear error and keep attempts unchanged,
   - attempts-left display updates on first valid submit.
 
 ## 📝 Reflection

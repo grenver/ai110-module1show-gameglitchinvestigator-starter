@@ -109,6 +109,13 @@ if submit:
         st.session_state.history.append(raw_guess)
         # Session fix: invalid inputs show an explicit error and do not consume attempts.
         st.error(f"{err} Invalid attempts do not consume attempts.")
+    elif not (low <= guess_int <= high):
+        st.session_state.history.append(guess_int)
+        # Session fix: out-of-range guesses are invalid for the selected difficulty and do not use attempts.
+        st.error(
+            f"Your guess must be between {low} and {high}. "
+            "Invalid attempts do not consume attempts."
+        )
     else:
         # Session fix: count attempts only for valid guesses.
         st.session_state.attempts += 1
