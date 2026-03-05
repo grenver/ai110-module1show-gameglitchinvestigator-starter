@@ -42,3 +42,6 @@ Completed fixes:
 ## 📝 Reflection
 
 Reflection answers were completed in `reflection.md` based on this debugging process.
+
+<img width="1872" height="947" alt="image" src="https://github.com/user-attachments/assets/b68a5c9d-b94e-4d78-bc0b-51597fd386b2" />
+
