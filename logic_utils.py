@@ -5,7 +5,8 @@ def get_range_for_difficulty(difficulty: str):
     if difficulty == "Normal":
         return 1, 100
     if difficulty == "Hard":
-        return 1, 50
+        # Session fix: Hard range widened so it is actually harder than Normal.
+        return 1, 200
     return 1, 100
 
 

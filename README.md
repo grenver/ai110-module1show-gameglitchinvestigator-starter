@@ -12,6 +12,7 @@ Completed fixes:
 - Kept the attempts/score info bar in its original UI position while updating correctly after submit.
 - Invalid guesses now show an explicit error and **do not consume attempts**.
 - Added difficulty-range input validation (out-of-range guesses are rejected and do not consume attempts).
+- Rebalanced difficulty ranges so `Hard` now uses a wider range than `Normal`.
 - Aligned tests with the current `check_guess` return shape and verified tests pass.
 
 ## 🛠️ Setup
@@ -29,6 +30,7 @@ Completed fixes:
 - Manual checks completed in app:
   - hints display correct direction,
    - high/low outcomes are consistent across all attempts,
+   - Hard mode now has a larger range than Normal mode,
   - difficulty/new game resets state correctly,
   - invalid input does not reduce attempts,
    - out-of-range guesses show a clear error and keep attempts unchanged,
