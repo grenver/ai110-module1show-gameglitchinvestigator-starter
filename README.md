@@ -13,7 +13,7 @@ Completed fixes:
 - Invalid guesses now show an explicit error and **do not consume attempts**.
 - Added difficulty-range input validation (out-of-range guesses are rejected and do not consume attempts).
 - Rebalanced difficulty ranges so `Hard` now uses a wider range than `Normal`.
-- Aligned tests with the current `check_guess` return shape and verified tests pass.
+- Strengthened tests to assert full `check_guess` tuples (outcome + hint message), not outcome only.
 
 ## 🛠️ Setup
 
@@ -35,6 +35,9 @@ Completed fixes:
   - invalid input does not reduce attempts,
    - out-of-range guesses show a clear error and keep attempts unchanged,
   - attempts-left display updates on first valid submit.
+
+- Automated checks:
+   - `check_guess` tests now fail if either outcome or hint message text regresses.
 
 ## 📝 Reflection
 
