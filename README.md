@@ -7,6 +7,7 @@ This project started as a buggy AI-generated Streamlit guessing game and was deb
 Completed fixes:
 - Refactored game logic functions into `logic_utils.py` and imported them in `app.py`.
 - Corrected hint direction text (`Too High` → go lower, `Too Low` → go higher).
+- Fixed even-attempt comparison bug by keeping `secret` numeric (removed string casting path).
 - Stabilized state resets for difficulty changes and new game flow.
 - Kept the attempts/score info bar in its original UI position while updating correctly after submit.
 - Invalid guesses now show an explicit error and **do not consume attempts**.
@@ -26,6 +27,7 @@ Completed fixes:
 - Latest test result from this session: `3 passed`.
 - Manual checks completed in app:
   - hints display correct direction,
+   - high/low outcomes are consistent across all attempts,
   - difficulty/new game resets state correctly,
   - invalid input does not reduce attempts,
   - attempts-left display updates on first valid submit.
