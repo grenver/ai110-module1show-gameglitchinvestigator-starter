@@ -43,14 +43,17 @@ def check_guess(guess, secret):
 
     try:
         if guess > secret:
+            # Session fix: corrected hint direction for high guesses.
             return "Too High", "📉 Go LOWER!"
         else:
+            # Session fix: corrected hint direction for low guesses.
             return "Too Low", "📈 Go HIGHER!"
     except TypeError:
         g = str(guess)
         if g == secret:
             return "Win", "🎉 Correct!"
         if g > secret:
+            # Keep the same corrected hint behavior in fallback path.
             return "Too High", "📉 Go LOWER!"
         return "Too Low", "📈 Go HIGHER!"
 

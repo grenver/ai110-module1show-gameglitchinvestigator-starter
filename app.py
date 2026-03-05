@@ -6,6 +6,7 @@ from logic_utils import (
     parse_guess,
     update_score,
 )
+# Session refactor: game logic lives in logic_utils.py and is imported here.
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
@@ -39,6 +40,7 @@ if "difficulty" not in st.session_state:
     st.session_state.difficulty = difficulty
 
 if st.session_state.difficulty != difficulty:
+    # Session fix: when difficulty changes, reset game state for a clean new round.
     st.session_state.difficulty = difficulty
     st.session_state.secret = random.randint(low, high)
     st.session_state.attempts = 0
@@ -47,6 +49,7 @@ if st.session_state.difficulty != difficulty:
     st.session_state.history = []
 
 if "attempts" not in st.session_state:
+    # Session fix: start attempts at 0 so the first valid guess is attempt #1.
     st.session_state.attempts = 0
 
 if "score" not in st.session_state:
@@ -59,6 +62,7 @@ if "history" not in st.session_state:
     st.session_state.history = []
 
 st.subheader("Make a guess")
+# Session fix: reserve this location so the attempts bar stays in its original UI spot.
 attempts_info = st.empty()
 
 with st.expander("Developer Debug Info"):
@@ -82,6 +86,7 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
+    # Session fix: reset using current difficulty range and clear round-specific state.
     st.session_state.attempts = 0
     st.session_state.secret = random.randint(low, high)
     st.session_state.score = 0
@@ -102,8 +107,10 @@ if submit:
 
     if not ok:
         st.session_state.history.append(raw_guess)
+        # Session fix: invalid inputs show an explicit error and do not consume attempts.
         st.error(f"{err} Invalid attempts do not consume attempts.")
     else:
+        # Session fix: count attempts only for valid guesses.
         st.session_state.attempts += 1
         st.session_state.history.append(guess_int)
 
@@ -140,6 +147,7 @@ if submit:
                 )
 
 attempts_info.info(
+    # Session fix: render after submit logic so first-attempt updates show immediately.
     f"Guess a number between {low} and {high}. "
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
